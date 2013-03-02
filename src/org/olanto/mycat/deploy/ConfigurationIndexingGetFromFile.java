@@ -188,6 +188,8 @@ public class ConfigurationIndexingGetFromFile implements IdxInit {
 
         DOCNAME_MAX_BROWSE = Integer.parseInt(prop.getProperty("DOCNAME_MAX_BROWSE", "5000"));
 
+        DOCNAME_BROWSE_INSENSITIVE = Boolean.parseBoolean(prop.getProperty("DOCNAME_BROWSE_INSENSITIVE", "true"));      
+        
         NEAR_DISTANCE = Integer.parseInt(prop.getProperty("NEAR_DISTANCE", "8"));
 
 
