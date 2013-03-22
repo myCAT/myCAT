@@ -63,7 +63,7 @@ public class OpenIndexWithoutServerTestQuery {      // is an application, not an
     static void test(String query) {
         try {
             Timer t1 = new Timer("------------- " + query);
-            QLResultNice res = id.evalQLNice(null, query, 0, 200);
+            QLResultNice res = id.evalQLNice(null, query, 0, 200,false);
             msg("time:" + res.duration);
             msg("nbres:" + res.result.length);
             for (int i = 0; i < res.result.length; i++) {
