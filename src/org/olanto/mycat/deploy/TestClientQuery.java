@@ -56,7 +56,9 @@ public class TestClientQuery {
 //            testnice("QUOTATION(\"bottom-up\") IN[\"SOURCE.EN\" ANDL \"TARGET.FR\"]");
 //     is.indexdir(is.getROOT_CORPUS_TXT());
 //     is.showFullIndex();
-            testnice("QUOTATION(\"bottom-up\") IN[\"SOURCE.EN\" ANDL \"TARGET.FR\"]");
+//            testnice("QUOTATION(\"bottom-up\") IN[\"SOURCE.EN\" ANDL \"TARGET.FR\"]");
+            testnice("QUOTATION(\"for which an established\") IN[\"SOURCE.EN\" ANDL \"TARGET.FR\"]");
+            testnice("QUOTATION(\"for which an established basis\") IN[\"SOURCE.EN\" ANDL \"TARGET.FR\"]");
     //        testnice("QUOTATION(\"report\") IN[\"SOURCE.EN\" ANDL \"TARGET.FR\" ANDL \"COLLECTION.Admin\" ORL \"COLLECTION.Council_docs¦Letters\"]");
     //        try {
     //            PropertiesList prop = is.getDictionnary("COLLECTION.");
