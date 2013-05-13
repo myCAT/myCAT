@@ -1,23 +1,24 @@
-/**********
-    Copyright © 2010-2012 Olanto Foundation Geneva
-
-   This file is part of myCAT.
-
-   myCAT is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as
-    published by the Free Software Foundation, either version 3 of
-    the License, or (at your option) any later version.
-
-    myCAT is distributed in the hope that it will be useful, but
-    WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-    See the GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with myCAT.  If not, see <http://www.gnu.org/licenses/>.
-
-**********/
-
+/**
+ * ********
+ * Copyright © 2010-2012 Olanto Foundation Geneva
+ *
+ * This file is part of myCAT.
+ *
+ * myCAT is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU Affero General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option) any
+ * later version.
+ *
+ * myCAT is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with myCAT. If not, see <http://www.gnu.org/licenses/>.
+ *
+ *********
+ */
 package org.olanto.mycat.map;
 
 import org.olanto.senseos.SenseOS;
@@ -39,13 +40,15 @@ public class ConfigurationMapGetFromFile implements MapArchiveInit {
     String fileName = "to be initialised";
     Properties prop;
 
-    /** cr�e l'attache de cette classe.
+    /**
+     * cr�e l'attache de cette classe.
      */
     public ConfigurationMapGetFromFile() {
     }
 
     /**
      * charge la configuration depuis un fichier de properties
+     *
      * @param fileName nom du fichier
      */
     public ConfigurationMapGetFromFile(String fileName) {
@@ -67,8 +70,9 @@ public class ConfigurationMapGetFromFile implements MapArchiveInit {
         prop.list(System.out);
     }
 
-    /** initialisation permanante des constantes.
-     * Ces constantes choisies d�finitivement pour toute la dur�e de la vie de l'index.
+    /**
+     * initialisation permanante des constantes. Ces constantes choisies
+     * d�finitivement pour toute la dur�e de la vie de l'index.
      */
     public void InitPermanent() {
 
@@ -83,17 +87,18 @@ public class ConfigurationMapGetFromFile implements MapArchiveInit {
         LANGID = new String[LANGPAIR_MAX];
 
         LIST_OF_MAP_LANG = prop.getProperty("LIST_OF_MAP_LANG", "XX YY");
+        SKIP_LINE = Boolean.parseBoolean(prop.getProperty("SKIP_LINE", "false"));
 
         Pattern ps = Pattern.compile("[\\s]");  // le blanc
-        
-        LANGID=ps.split(LIST_OF_MAP_LANG);
 
-        if (LANGID.length!=LANGPAIR_MAX){
+        LANGID = ps.split(LIST_OF_MAP_LANG);
+
+        if (LANGID.length != LANGPAIR_MAX) {
             error("FATAL ERROR: Language list must have the size of 2^LANGPAIR_MAXBIT !! (Check config MAP)");
-            error("actual size:"+LANGID.length);
+            error("actual size:" + LANGID.length);
             System.exit(0);
         }
-        
+
         /* EN est la langue pivot */
 //        LANGID[ 0] = "EN";
 //        LANGID[ 1] = "FR";
@@ -133,7 +138,7 @@ public class ConfigurationMapGetFromFile implements MapArchiveInit {
         MAP_COMPRESSION = Compression.YES;
 
 
-             WORD_MINLENGTH = Integer.parseInt(prop.getProperty("WORD_MINLENGTH", "3"));
+        WORD_MINLENGTH = Integer.parseInt(prop.getProperty("WORD_MINLENGTH", "3"));
 
         // dynamic load of TOKEN_DEFINITION
         Class token = null;
@@ -150,21 +155,25 @@ public class ConfigurationMapGetFromFile implements MapArchiveInit {
             error_fatal("InstantiationException - try to load: " + TOKEN_DEFINITION);
         } catch (IllegalAccessException ex) {
             error_fatal("IllegalAccessException - try to load: " + TOKEN_DEFINITION);
-        }   
-        
+        }
+
         WORD_MAXLENGTH = 40;
         IDX_DONTINDEXTHIS = prop.getProperty("IDX_DONTINDEXTHIS", "C:/SIMPLE/config/dontindexthiswords.txt");
-        SOF=new ParseSetOfWords(IDX_DONTINDEXTHIS); // charge les 
+        SOF = new ParseSetOfWords(IDX_DONTINDEXTHIS); // charge les 
 
-        /** nbre d'object storage actif = 2^OBJ_PW2 */
+        /**
+         * nbre d'object storage actif = 2^OBJ_PW2
+         */
         OBJ_PW2 = 0;  ///0=>1,1=>2,2=>4,3=>8,4=>16
         OBJ_NB = (int) Math.pow(2, OBJ_PW2);  ///0=>1,1=>2,2=>4,
 
 
     }
 
-    /** initialisation des constantes de configuration (modifiable).
-     * Ces constantes choisies d�finitivement pour toute la dur�e de la vie du processus.
+    /**
+     * initialisation des constantes de configuration (modifiable). Ces
+     * constantes choisies d�finitivement pour toute la dur�e de la vie du
+     * processus.
      */
     public void InitConfiguration() {
 
@@ -172,8 +181,8 @@ public class ConfigurationMapGetFromFile implements MapArchiveInit {
 
 
         // les directoire
-        COMLOG_FILE = prop.getProperty("COMLOG_FILE", SenseOS.getMYCAT_HOME()+"/data/MAP_ARCH/common.log");
-        DETLOG_FILE = prop.getProperty("DETLOG_FILE", SenseOS.getMYCAT_HOME()+"/data/MAP_ARCH/detail.log");
+        COMLOG_FILE = prop.getProperty("COMLOG_FILE", SenseOS.getMYCAT_HOME() + "/data/MAP_ARCH/common.log");
+        DETLOG_FILE = prop.getProperty("DETLOG_FILE", SenseOS.getMYCAT_HOME() + "/data/MAP_ARCH/detail.log");
 
         COMMON_ROOT = prop.getProperty("COMMON_ROOT");
         MAP_ROOT = COMMON_ROOT;
