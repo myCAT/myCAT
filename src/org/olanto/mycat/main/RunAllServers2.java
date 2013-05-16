@@ -21,6 +21,7 @@
 package org.olanto.mycat.main;
 
 import java.rmi.Naming;
+import org.olanto.converter.ConfigUtil;
 import org.olanto.convsrv.server.ConvertService_BASIC;
 import org.olanto.mycat.map.ConfigurationMapGetFromFile;
 import org.olanto.mapman.server.GetMapService;
@@ -69,7 +70,8 @@ public class RunAllServers2 {
         }
         try {
             System.out.println("initialisation du convertisseur ...");
-
+     ConfigUtil.setConfigFile(SenseOS.getMYCAT_HOME()+"/config/CONV_fix.xml");
+     ConfigUtil.loadConfigFromXml();
             ConvertService_BASIC idxobj = new ConvertService_BASIC();
 
             System.out.println("Enregistrement du serveur");
