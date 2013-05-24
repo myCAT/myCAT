@@ -220,7 +220,7 @@ public class ConfigurationIndexingGetFromFile implements IdxInit {
         ORIGINAL_HOST = prop.getProperty("ORIGINAL_HOST", "localhost");
         ORIGINAL_PORT = prop.getProperty("ORIGINAL_PORT", "80");
 
-
+SKIP_LINE_QUOTE_DECTECTOR=Boolean.parseBoolean(prop.getProperty("SKIP_LINE_QUOTE_DECTECTOR", "false"));
         OPEN_REF_BEG = prop.getProperty("OPEN_REF_BEG", "[R");
         OPEN_REF_END = prop.getProperty("OPEN_REF_END", "]");
         CLOSE_REF_BEG = prop.getProperty("CLOSE_REF_BEG", "[E");
