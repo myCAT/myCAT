@@ -88,6 +88,8 @@ public class ConfigurationMapGetFromFile implements MapArchiveInit {
 
         LIST_OF_MAP_LANG = prop.getProperty("LIST_OF_MAP_LANG", "XX YY");
         SKIP_LINE = Boolean.parseBoolean(prop.getProperty("SKIP_LINE", "false"));
+        
+        GET_TXT_FROM_ZIP_CACHE= Boolean.parseBoolean(prop.getProperty("GET_TXT_FROM_ZIP_CACHE", "false"));
 
         Pattern ps = Pattern.compile("[\\s]");  // le blanc
 

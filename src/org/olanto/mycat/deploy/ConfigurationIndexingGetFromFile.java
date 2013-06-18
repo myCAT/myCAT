@@ -93,6 +93,7 @@ public class ConfigurationIndexingGetFromFile implements IdxInit {
         IDX_WITHDOCBAG = Boolean.parseBoolean(prop.getProperty("IDX_WITHDOCBAG", "false"));
         IDX_MORE_INFO = Boolean.parseBoolean(prop.getProperty("IDX_MORE_INFO", "true"));
         IDX_SAVE_POSITION = Boolean.parseBoolean(prop.getProperty("IDX_SAVE_POSITION", "true"));
+        IDX_ZIP_CACHE = Boolean.parseBoolean(prop.getProperty("IDX_ZIP_CACHE", "false"));
 
 
         DOC_SIZE_NAME = Integer.parseInt(prop.getProperty("DOC_SIZE_NAME", "256"));
