@@ -26,7 +26,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.olanto.converter.SimpleConverterApplicationTest;
+import org.olanto.converter.SimpleConverterCLI;
 import org.olanto.idxvli.IdxConstant;
 import org.olanto.idxvli.server.IndexDirectory;
 import org.olanto.idxvli.server.IndexService_MyCat;
@@ -76,7 +76,8 @@ public class RTUpdate extends Thread {
 
     public static void main(String[] args) {
         String home=SenseOS.getMYCAT_HOME();
-        Thread thread = new RTUpdate(IdxConstant.PRE_PROCESSING_INTERVAL, "-f txt -b "+home+"/corpus/bad "+home+"/corpus/docs "+home+"/corpus/source");
+       // Thread thread = new RTUpdate(IdxConstant.PRE_PROCESSING_INTERVAL, "-f txt -b "+home+"/corpus/bad "+home+"/corpus/docs "+home+"/corpus/source");
+       Thread thread = new RTUpdate(IdxConstant.PRE_PROCESSING_INTERVAL, home+"/config/"+"CONV_fix.xml");
         thread.run();
     }
 
@@ -116,7 +117,8 @@ public class RTUpdate extends Thread {
         System.out.println("Start conversion Update #" + count);
         try {
             String[] args = (new String(convParams)).split("\\s");
-            SimpleConverterApplicationTest.main(args);
+ //           SimpleConverterApplicationTest.main(args);   -- old converter
+            SimpleConverterCLI.main(args);
         } catch (Exception ex) {
             Logger.getLogger(RTUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
